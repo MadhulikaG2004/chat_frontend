@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.card{
+  border-top:#149CEA solid 2px;
+  border-right: #149CEA solid 2px;
+  border-bottom: black solid 2px;
+  border-left: black solid 2px;
+}
+.contactlist{
+  display: flex;
+  flex-direction: column;
+}
+
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure particles are behind other content */
+}
+.chatroom-container {
+  
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Roboto';
+  background: black; /* Black to Blue gradient */
+}
+h1{
+  text-shadow: #eee;
+}
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Text color */
+  font-size: 2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Optional: make text bold */
+  text-align: center;
+  z-index: 1; /* Ensure text is above particles */
+}
+button {
+  width: 5em;
+  margin:1em;
+  height: 2.5em;
+  border: #46b6f7 solid 1px;
+  border-radius: 20px;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  background-color: #46b6f7;
+ 
+  font-size: 16px;
+ 
+  cursor: pointer;
+}
+.con{
+  display: flex;
+  border: black solid 1px;
+  border-radius: 1rem;
+}
+
+
+
+
+.nav{
+  float:right;
+  display: flex;
+  flex-direction: flex-end;
+}
+.nav button {
+  display: inline-block;
+}
+@media (max-width: 600px) {
+  .nav button {
+    display: block;
+    width: 100%; 
+    margin-bottom: 10px; 
+  }
+}
+.typewriter {
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; 
+  border-right: .15em solid #149CEA; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret{
+  from, to { border-color: transparent }
+  50% { border-color:#149CEA; }
+}
+
+/* The typewriter cursor effect */
