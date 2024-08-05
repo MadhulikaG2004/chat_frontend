@@ -1,32 +1,31 @@
-// ContactList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, IconButton, Avatar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
-import ProfileModal from './ProfileModal'; // Ensure the path is correct
+import ProfilePopover from './ProfilePopover'; // Ensure the path is correct
 
 const ContactList = ({ contacts, groups, onSelectGroup, onSelectContact, userDetails, unreadMessages }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [tab, setTab] = useState("chat");
-  const [modalOpen, setModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const imageBase64 = userDetails.image;
   const imageUrl = `data:image/png;base64,${imageBase64}`;
 
-  const handleOpen = () => {
-    setModalOpen(true);
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setModalOpen(false);
+    setAnchorEl(null);
   };
 
   const handleProfile = () => {
     navigate('/profile', { state: { userDetails } });
-    setModalOpen(false);
+    setAnchorEl(null);
   };
 
   const handleTabSwitch = (tab) => {
@@ -186,9 +185,10 @@ const ContactList = ({ contacts, groups, onSelectGroup, onSelectContact, userDet
       {tab === "group" && (
         <ul className="divide-y divide-[#E0E0E0]">
           {groups.map(renderGroup)}
-        </ul>)}
-      <ProfileModal
-        open={modalOpen}
+        </ul>
+      )}
+      <ProfilePopover
+        anchorEl={anchorEl}
         onClose={handleClose}
         onProfileClick={handleProfile}
         onLogoutClick={handleLogout}
